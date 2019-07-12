@@ -17,7 +17,7 @@ Meteor.settings.public = {
       ],
       "snapMaxFileSizeKB": 4096,
       "full_upldr": "https://upload1.galaxii.io",
-      "localhost": true
+      "localhost": false
     },
     "app": "dtube/0.8",
     "beneficiary": "galaxii",
