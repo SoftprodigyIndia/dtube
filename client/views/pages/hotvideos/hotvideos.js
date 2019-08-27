@@ -1,3 +1,5 @@
+
+console.log('Hot videos')
 Template.hotvideos.helpers({
   hotVideos: function () {
     videos =  Videos.find({ source: 'chainByHot' }).fetch()

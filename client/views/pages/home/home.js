@@ -1,5 +1,5 @@
 var moment = require('moment');
-
+console.log('Home')
 Template.home.helpers({
   watchAgain: function () {
     videos =  Videos.find({ source: 'wakaArticles' }, { limit: Session.get('remoteSettings').loadLimit }).fetch()
@@ -17,6 +17,7 @@ Template.home.helpers({
     return legalVideos
   },
   hotVideos: function () {
+    console.log('hot videos')
     videos =  Videos.find({ source: 'chainByHot' }, {limit: 25}).fetch()
     legalVideos = legalFilter(videos)
     return legalVideos

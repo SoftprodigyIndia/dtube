@@ -141,6 +141,8 @@ Template.upload.uploadImage = function (file, progressid, cb) {
     ? 'http://localhost:5000/uploadImage'
     : Session.get('upldr')+'/uploadImage';
 
+  console.log(postUrl)
+
   var formData = new FormData();
   formData.append('files', file);
   $(progressid).progress({ value: 0, total: 1 })
@@ -150,10 +152,12 @@ Template.upload.uploadImage = function (file, progressid, cb) {
     async: true,
     crossDomain: true,
     type: "POST",
-    data: formData,
+    data: formData, 
     xhr: function () {
       var xhr = new window.XMLHttpRequest();
       xhr.upload.addEventListener("progress", function (evt) {
+        console.log('------------thumbnail ajax----------')
+        console.log(evt)
         if (evt.lengthComputable) {
           $(progressid).progress({ value: evt.loaded, total: evt.total });
           if (evt.loaded == evt.total) {
@@ -167,6 +171,8 @@ Template.upload.uploadImage = function (file, progressid, cb) {
     contentType: false,
     processData: false,
     success: function (result) {
+      console.log('----------------thumbnail ajax result----------')
+      console.log(result)
       if (typeof result === 'string')
         result = JSON.parse(result)
       $(progressid).hide()
